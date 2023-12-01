@@ -2,8 +2,7 @@
 name = "server"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+publish = false
 
 [dependencies]
 app = { path = "../app", default-features = false, features = ["ssr"] }
@@ -11,8 +10,12 @@ leptos = { workspace = true, features = [ "ssr" ]}
 leptos_axum.workspace = true
 
 axum.workspace = true
+sea-orm.workspace = true
+dotenv.workspace = true
 simple_logger.workspace = true
 tokio.workspace = true
 tower.workspace = true
 tower-http.workspace = true
 log.workspace = true
+migration.workspace = true
+entities.workspace = true

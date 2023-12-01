@@ -1,0 +1,16 @@
+local-db:
+		podman run -d --replace \
+			--name server-db \
+			-e POSTGRES_PASSWORD=apt-mate \
+			-e POSTGRES_USER=apt-mate \
+			-e POSTGRES_DB=apt-mate \
+			-p 5432:5432 postgres:12-alpine
+
+reset:
+	sea-orm-cli migrate reset
+
+seed:
+	sea-orm-cli migrate fresh
+
+generate-entities:
+	sea-orm-cli generate entity --lib -o entities/src

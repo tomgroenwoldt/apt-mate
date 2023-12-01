@@ -1,5 +1,5 @@
 [workspace]
-members = ["app", "frontend", "server"]
+members = ["app", "frontend", "server", "server/migration", "server/entities"]
 
 # need to be applied only to wasm build
 [profile.release]
@@ -17,8 +17,12 @@ axum = "0.6.11"
 cfg-if = "1.0.0"
 console_error_panic_hook = "0.1.7"
 console_log = "1.0.0"
+dotenv = "0.15.0"
+entities = { path = "server/entities" }
 http = "0.2.9"
 log = "0.4.17"
+sea-orm = { version = "0.12.7", features = ["sqlx-postgres", "runtime-tokio-rustls", "with-uuid"] }
+migration = { path = "server/migration" }
 simple_logger = "4.1.0"
 thiserror = "1.0.40"
 tokio = { version = "1.26.0", features = ["full"] }

@@ -1,14 +1,28 @@
-use app::*;
+extern crate dotenv;
+
+use std::env;
+
 use axum::{routing::post, Router};
-use fileserv::file_and_error_handler;
+use dotenv::dotenv;
 use leptos::*;
 use leptos_axum::{generate_route_list, LeptosRoutes};
+use sea_orm::{Database, DatabaseConnection};
+
+use app::*;
+use fileserv::file_and_error_handler;
+use migration::{Migrator, MigratorTrait};
 
 pub mod fileserv;
 
 #[tokio::main]
 async fn main() {
-    simple_logger::init_with_level(log::Level::Debug).expect("couldn't initialize logging");
+    simple_logger::init_with_level(log::Level::Debug).expect("Couldn't initialize logging");
+    dotenv().ok();
+
+    // Setup database connection
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let connection: DatabaseConnection = Database::connect(database_url).await.unwrap();
+    Migrator::up(&connection, None).await.unwrap();
 
     // Setting get_configuration(None) means we'll be using cargo-leptos's env values
     // For deployment these variables are:
