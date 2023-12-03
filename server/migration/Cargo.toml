@@ -10,7 +10,7 @@ path = "src/lib.rs"
 
 [dependencies]
 async-std = { version = "1", features = ["attributes", "tokio1"] }
-entities.workspace = true
+entities = { path = "../entities" }
 rand = "0.8.5"
 uuid = { version = "1.6.1", features = ["v4"] }
 

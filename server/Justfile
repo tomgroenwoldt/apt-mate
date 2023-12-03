@@ -13,4 +13,4 @@ seed:
 	sea-orm-cli migrate fresh
 
 generate-entities:
-	sea-orm-cli generate entity --lib -o entities/src
+	sea-orm-cli generate entity --lib --with-serde both -o entities/src

@@ -151,12 +151,16 @@ name = "app"
 version = "0.1.0"
 dependencies = [
  "cfg-if",
+ "entities",
  "http",
  "leptos",
  "leptos_axum",
  "leptos_meta",
  "leptos_router",
+ "sea-orm",
+ "serde",
  "thiserror",
+ "uuid",
 ]
 
 [[package]]
@@ -1134,6 +1138,7 @@ name = "entities"
 version = "0.1.0"
 dependencies = [
  "sea-orm",
+ "serde",
 ]
 
 [[package]]
@@ -3317,9 +3322,9 @@ dependencies = [
  "app",
  "axum",
  "dotenv",
- "entities",
  "leptos",
  "leptos_axum",
+ "leptos_router",
  "log",
  "migration",
  "sea-orm",

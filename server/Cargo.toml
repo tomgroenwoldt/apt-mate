@@ -8,14 +8,14 @@ publish = false
 app = { path = "../app", default-features = false, features = ["ssr"] }
 leptos = { workspace = true, features = [ "ssr" ]}
 leptos_axum.workspace = true
+leptos_router.workspace = true
 
 axum.workspace = true
-sea-orm.workspace = true
 dotenv.workspace = true
+log.workspace = true
+migration.workspace = true
 simple_logger.workspace = true
+sea-orm = { version = "0.12.7", features = ["sqlx-postgres", "runtime-tokio-rustls", "with-uuid"] }
 tokio.workspace = true
 tower.workspace = true
 tower-http.workspace = true
-log.workspace = true
-migration.workspace = true
-entities.workspace = true
